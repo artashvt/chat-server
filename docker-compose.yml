@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+
+  chat-server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: chat-server
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    working_dir: /usr/src/app
+    networks:
+      - chatnetwork
+
+
+networks:
+  chatnetwork:
+    driver: bridge
+    name: chatnetwork
